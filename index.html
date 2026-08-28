@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Questlog</title>
+<meta name="theme-color" content="#14141c">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="sheet" id="sheet">
+  <div class="sheet-top">
+    <div class="badge" id="badge">1</div>
+    <div class="sheet-id">
+      <input id="heroName" class="hero-name" value="Adventurer" maxlength="20" />
+      <div class="hero-sub"><span id="levelLabel">Level 1</span> · <span class="rank" id="rankLabel">Novice</span></div>
+    </div>
+    <div class="gold">
+      <span class="gold-icon">◆</span><span id="goldCount">0</span>
+    </div>
+  </div>
+
+  <div class="bar-row">
+    <div class="bar-label">HP</div>
+    <div class="bar hp-bar"><div class="bar-fill" id="hpFill"></div><div class="bar-segments" id="hpSegments"></div></div>
+    <div class="bar-value" id="hpValue">50/50</div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">XP</div>
+    <div class="bar xp-bar"><div class="bar-fill" id="xpFill"></div><div class="bar-segments" id="xpSegments"></div></div>
+    <div class="bar-value" id="xpValue">0/100</div>
+  </div>
+
+  <div id="floaters" class="floaters"></div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="tab active" data-tab="habits">Habits</button>
+  <button class="tab" data-tab="dailies">Dailies</button>
+  <button class="tab" data-tab="todos">To&#8209;Dos</button>
+  <button class="tab" data-tab="shop">Shop</button>
+</nav>
+
+<main>
+  <section class="panel active" id="panel-habits">
+    <p class="hint">Repeatable actions. Tap + for a win, − for a slip. No streak to keep, just momentum.</p>
+    <ul class="list" id="habitsList"></ul>
+    <form class="add-row" data-kind="habit">
+      <input type="text" placeholder="Add a habit — e.g. Drink water" required maxlength="60">
+      <button type="submit">Add</button>
+    </form>
+  </section>
+
+  <section class="panel" id="panel-dailies">
+    <p class="hint">Reset every day at dawn. Miss one and it bites your HP.</p>
+    <ul class="list" id="dailiesList"></ul>
+    <form class="add-row" data-kind="daily">
+      <input type="text" placeholder="Add a daily — e.g. Morning workout" required maxlength="60">
+      <button type="submit">Add</button>
+    </form>
+  </section>
+
+  <section class="panel" id="panel-todos">
+    <p class="hint">One-time quests. Complete them and they're gone for good.</p>
+    <ul class="list" id="todosList"></ul>
+    <form class="add-row" data-kind="todo">
+      <input type="text" placeholder="Add a to-do — e.g. Book dentist" required maxlength="60">
+      <button type="submit">Add</button>
+    </form>
+  </section>
+
+  <section class="panel" id="panel-shop">
+    <p class="hint">Spend gold on real rewards you set for yourself.</p>
+    <ul class="list" id="shopList"></ul>
+    <form class="add-row add-row-shop" data-kind="reward">
+      <input type="text" placeholder="Reward name — e.g. Movie night" required maxlength="60">
+      <input type="number" placeholder="Cost" min="1" max="999" required class="cost-input">
+      <button type="submit">Add</button>
+    </form>
+  </section>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
